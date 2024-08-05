@@ -29,3 +29,5 @@
 [Django 4 by example (4th Edition) github](https://github.com/PacktPublishing/Django-4-by-example)
 
 [Django 4 by example (4th Edition) book](https://books.google.es/books?id=GLaEEAAAQBAJ&pg=PA171&hl=es&source=gbs_selected_pages&cad=1#v=onepage&q&f=false)
+
+00
