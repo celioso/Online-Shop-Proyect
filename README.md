@@ -29,3 +29,23 @@
 [Django 4 by example (4th Edition) github](https://github.com/PacktPublishing/Django-4-by-example)
 
 [Django 4 by example (4th Edition) book](https://books.google.es/books?id=GLaEEAAAQBAJ&pg=PA171&hl=es&source=gbs_selected_pages&cad=1#v=onepage&q&f=false)
+
+
+## Instalar Celery
+
+`pip install celery`
+
+### docker
+
+1. descargar la imagen de `pip install celery`
+2. ejecute la imagen `docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:management`
+
+3. se ingresa ela link `http://127.0.0.1:15672`
+login y passwork es **guest**
+
+para redircccioner el broker `app.conf.broker_url = 'amqp://<User>:<passwork>t@localhost'` ejemplo `app.conf.broker_url = 'amqp://guest:guest@localhost'` en el archivo `myshop/celery.py`
+
+## Installar flower
+`pip install flower`
+
+iniciar ` celery -A myshop flower`
