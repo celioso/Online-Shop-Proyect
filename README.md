@@ -63,3 +63,63 @@ link `http://127.0.0.1:5555/`
 crea una cuenta en una red finaciera [https://dashboard.stripe.com/](https://dashboard.stripe.com/)
 
 Instalar stripe `pip install stripe`
+
+## seguridad en archivo .env
+
+El archivo `.env` se utiliza comúnmente en proyectos de Python para almacenar variables de entorno sensibles, como claves de API, configuraciones de base de datos y otros datos de configuración que no se deben almacenar directamente en el código fuente. Este archivo es especialmente útil para mantener la seguridad y facilitar la configuración de diferentes entornos (desarrollo, pruebas, producción, etc.).
+
+Para usar un archivo .`env` en un proyecto de Python, generalmente se utiliza la librería python-dotenv. Aquí te explico cómo hacerlo:
+
+### 1. Instala la librería python-dotenv
+
+Primero, necesitas instalar la librería `python-dotenv`. Puedes hacerlo utilizando `pip`:
+
+```bash
+pip install python-dotenv
+```
+
+### 2. Crea un archivo .env
+
+Crea un archivo llamado `.env` en la raíz de tu proyecto. Este archivo contendrá tus variables de entorno en el siguiente formato:
+
+**.env**
+```env
+SECRET_KEY=supersecretkey
+DATABASE_URL=postgres://user:password@localhost:5432/mydatabase
+DEBUG=True
+```
+
+### 3. Carga las variables de entorno en tu código Python
+Para cargar y acceder a estas variables de entorno en tu código Python, debes utilizar la librería `python-dotenv`. Aquí tienes un ejemplo:
+
+```python
+from dotenv import load_dotenv
+import os
+
+# Cargar las variables de entorno desde el archivo .env
+load_dotenv()
+
+# Acceder a las variables de entorno
+secret_key = os.getenv("SECRET_KEY")
+database_url = os.getenv("DATABASE_URL")
+debug = os.getenv("DEBUG")
+
+print(f"Secret Key: {secret_key}")
+print(f"Database URL: {database_url}")
+print(f"Debug Mode: {debug}")
+```
+
+### 4. Uso en diferentes entornos
+
+Puedes tener diferentes archivos `.env` para diferentes entornos, como `.env.development`, `.env.production`, etc., y cargar el archivo apropiado según el entorno en el que estés ejecutando tu aplicación.
+
+### 5. Seguridad
+
+Importante: Nunca debes subir tu archivo .env a un repositorio público. Asegúrate de incluirlo en tu .gitignore si estás utilizando Git.
+
+**.gitignore**
+
+```
+.env
+```
+Con esto, puedes gestionar tus variables de entorno de manera segura y eficiente en tus proyectos de Python.

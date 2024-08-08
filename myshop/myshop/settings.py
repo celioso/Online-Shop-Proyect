@@ -11,18 +11,19 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-
-
+from dotenv import load_dotenv
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+load_dotenv()
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-af^nj#%uisk#)#9yh&i(rc!4%2t^%wrf)&-j8&=jx0q%a@a9h4'
+SECRET_KEY = os.getenv('SECRET_KEY_APP')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -135,14 +136,15 @@ CART_SESSION_ID = 'cart'
 
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_HOST_USER = config('USER_EMAIL')
-# EMAIL_HOST_PASSWORD = config('PASS_APP')
-# EMAIL_PORT = 587  
-# EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = os.getenv('USER_EMAIL')
+EMAIL_HOST_PASSWORD = os.getenv('PASS_APP')
+EMAIL_PORT = 587  
+EMAIL_USE_TLS = True
 
 # Stripe settings
-STRIPE_PUBLISHABLE_KEY = 'pk_test_51PlIymLS1WeC81lnIxb4fXbl0D6XHbqV4nzDkdT10GJnDNScDSxkZEc7OeDmyzj6QLVr9NfBQkEvJnzyG43C5vOw00ZAlfUfD3' # Publishable key
-STRIPE_SECRET_KEY = 'sk_test_51PlIymLS1WeC81lnLV8qHb7Was08WAiyzqFc61J6JWe1oi9CnyVsw0Vb94tRlWPUGkd2yzSuXHLiIfsPgCijAOZX00TKAIokFZ'      # Secret key
+
+STRIPE_PUBLISHABLE_KEY = os.getenv('PUBLISHABLE_KEY')
+STRIPE_SECRET_KEY = os.getenv('SECRET_KEY')
 STRIPE_API_VERSION = '2022-08-01'
-# STRIPE_WEBHOOK_SECRET = ''
+STRIPE_WEBHOOK_SECRET = os.getenv('endpoint_secret')
