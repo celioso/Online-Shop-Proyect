@@ -45,7 +45,21 @@ login y passwork es **guest**
 
 para redircccioner el broker `app.conf.broker_url = 'amqp://<User>:<passwork>t@localhost'` ejemplo `app.conf.broker_url = 'amqp://guest:guest@localhost'` en el archivo `myshop/celery.py`
 
+## rabbitMQ
+iniciar `celery -A myshop worker -l info`
+link `http://127.0.0.1:15672/`
+
+​ejecutar celery por windows: `​celery -A myshop worker --loglevel=info -P solo`
+
 ## Installar flower
 `pip install flower`
 
-iniciar ` celery -A myshop flower`
+iniciar `celery -A myshop flower`
+link `http://127.0.0.1:5555/`
+
+
+### Stripe
+
+crea una cuenta en una red finaciera [https://dashboard.stripe.com/](https://dashboard.stripe.com/)
+
+Instalar stripe `pip install stripe`

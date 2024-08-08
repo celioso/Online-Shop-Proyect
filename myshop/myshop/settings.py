@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -40,6 +42,7 @@ INSTALLED_APPS = [
     'shop.apps.ShopConfig',
     'cart.apps.CartConfig',
     'orders.apps.OrdersConfig',
+    'payment.apps.PaymentConfig',
 ]
 
 MIDDLEWARE = [
@@ -130,4 +133,16 @@ MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 CART_SESSION_ID = 'cart'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_HOST_USER = config('USER_EMAIL')
+# EMAIL_HOST_PASSWORD = config('PASS_APP')
+# EMAIL_PORT = 587  
+# EMAIL_USE_TLS = True
+
+# Stripe settings
+STRIPE_PUBLISHABLE_KEY = 'pk_test_51PlIymLS1WeC81lnIxb4fXbl0D6XHbqV4nzDkdT10GJnDNScDSxkZEc7OeDmyzj6QLVr9NfBQkEvJnzyG43C5vOw00ZAlfUfD3' # Publishable key
+STRIPE_SECRET_KEY = 'sk_test_51PlIymLS1WeC81lnLV8qHb7Was08WAiyzqFc61J6JWe1oi9CnyVsw0Vb94tRlWPUGkd2yzSuXHLiIfsPgCijAOZX00TKAIokFZ'      # Secret key
+STRIPE_API_VERSION = '2022-08-01'
+# STRIPE_WEBHOOK_SECRET = ''
